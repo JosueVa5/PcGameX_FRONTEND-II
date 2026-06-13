@@ -1,0 +1,39 @@
+<div class="home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>El mejor hardware<br><span class="accent">para gamers</span></h1>
+      <p>Encuentra GPUs, CPUs, RAM y más para armar tu PC gaming perfecta.</p>
+      <a mat-flat-button color="primary" routerLink="/products" class="cta-btn">
+        <mat-icon>explore</mat-icon>
+        Ver catálogo
+      </a>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="categories container">
+    <h2>Categorías</h2>
+    <div class="categories-grid">
+      @for (cat of categories; track cat.id) {
+        <a [routerLink]="['/products']" [queryParams]="{category: cat.id}" class="category-chip">
+          <mat-icon>{{ cat.icon }}</mat-icon>
+          <span>{{ cat.label }}</span>
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- Destacados -->
+  <section class="featured container">
+    <h2>Productos destacados</h2>
+    <div class="products-grid">
+      @for (product of featured; track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+    <div class="view-all">
+      <a mat-stroked-button color="primary" routerLink="/products">Ver todos los productos</a>
+    </div>
+  </section>
+</div>

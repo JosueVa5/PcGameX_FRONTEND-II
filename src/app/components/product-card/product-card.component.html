@@ -1,0 +1,24 @@
+<mat-card class="product-card" [class.out-of-stock]="!product.available">
+  <a [routerLink]="['/products', product.id]" class="card-link">
+    <img mat-card-image [src]="product.image" [alt]="product.name" />
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="price">{{ product.price | currency:'USD' }}</p>
+      <mat-chip-set>
+        <mat-chip [color]="product.available ? 'primary' : 'warn'" highlighted>
+          {{ product.available ? 'En stock (' + product.stock + ')' : 'Agotado' }}
+        </mat-chip>
+      </mat-chip-set>
+    </mat-card-content>
+  </a>
+  <mat-card-actions>
+    <a mat-button color="primary" [routerLink]="['/products', product.id]">Ver detalles</a>
+    <button mat-icon-button (click)="onToggleFavorite($event)"
+      [color]="favoritesService.isFavorite(product.id) ? 'warn' : ''">
+      <mat-icon>{{ favoritesService.isFavorite(product.id) ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

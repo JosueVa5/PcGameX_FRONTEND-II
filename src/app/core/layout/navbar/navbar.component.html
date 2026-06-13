@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="navbar">
+  <a routerLink="/" class="brand">
+    <mat-icon>memory</mat-icon>
+    <span>PCgameX</span>
+  </a>
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
+    <a mat-button routerLink="/products" routerLinkActive="active">Catálogo</a>
+    <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+    <a mat-icon-button routerLink="/favorites" routerLinkActive="active"
+      [matBadge]="favoritesService.count()" matBadgeColor="accent"
+      [matBadgeHidden]="favoritesService.count() === 0">
+      <mat-icon>favorite</mat-icon>
+    </a>
+  </nav>
+</mat-toolbar>

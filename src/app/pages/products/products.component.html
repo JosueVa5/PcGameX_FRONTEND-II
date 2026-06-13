@@ -1,0 +1,29 @@
+<div class="products-page container">
+  <h1>Catálogo de productos</h1>
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Buscar producto</mat-label>
+    <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilters()" placeholder="Ej: RTX 4070, AMD..."/>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <app-filter-bar
+    [categories]="categories"
+    [selected]="selectedCategory"
+    (categoryChange)="onCategoryChange($event)" />
+
+  <p class="results-count">{{ filtered.length }} productos encontrados</p>
+
+  @if (filtered.length > 0) {
+    <div class="products-grid">
+      @for (product of filtered; track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <mat-icon>search_off</mat-icon>
+      <p>No se encontraron productos</p>
+    </div>
+  }
+</div>

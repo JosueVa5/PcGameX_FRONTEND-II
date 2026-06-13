@@ -1,0 +1,14 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 24px; }
+.search-field { width: 100%; }
+.results-count { color: #666; margin: 8px 0 16px; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.empty-state {
+  text-align: center; padding: 64px;
+  mat-icon { font-size: 4rem; width: 4rem; height: 4rem; color: #ccc; }
+  p { color: #999; font-size: 1.1rem; }
+}

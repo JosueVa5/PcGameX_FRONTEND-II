@@ -1,0 +1,21 @@
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+.back-btn { margin-bottom: 24px; }
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+.image-section img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.info-section {
+  h1 { font-size: 2rem; font-weight: 800; margin: 12px 0 4px; }
+  .brand { color: #666; margin-bottom: 16px; }
+  .price { font-size: 2rem; font-weight: 700; color: #1976d2; margin: 16px 0; }
+  .description { color: #444; line-height: 1.6; margin: 16px 0; }
+  h3 { font-weight: 700; margin: 16px 0 8px; }
+  .specs { list-style: none; padding: 0;
+    li { display: flex; align-items: center; gap: 8px; padding: 4px 0; color: #333;
+      mat-icon { color: #4caf50; font-size: 1rem; width: 1rem; height: 1rem; } }
+  }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+}

@@ -1,0 +1,31 @@
+.hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 80px 24px;
+  text-align: center;
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; }
+  .accent { color: #00d4ff; }
+  p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 32px; }
+  .cta-btn { padding: 12px 32px; font-size: 1rem; }
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; }
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  .category-chip {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 20px; border-radius: 12px; background: #f5f5f5;
+    text-decoration: none; color: inherit; font-weight: 500;
+    transition: all 0.2s;
+    &:hover { background: #e3f2fd; transform: translateY(-2px); }
+    mat-icon { font-size: 2rem; width: 2rem; height: 2rem; color: #1976d2; }
+  }
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.view-all { text-align: center; margin-top: 32px; }

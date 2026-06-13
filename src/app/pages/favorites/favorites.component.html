@@ -1,0 +1,24 @@
+<div class="favorites-page container">
+  <h1>Mis favoritos</h1>
+
+  @if (favoritesService.items().length > 0) {
+    <div class="header-actions">
+      <p>{{ favoritesService.items().length }} productos guardados</p>
+      <button mat-stroked-button color="warn" (click)="favoritesService.clear()">
+        <mat-icon>delete_sweep</mat-icon> Limpiar favoritos
+      </button>
+    </div>
+    <div class="products-grid">
+      @for (product of favoritesService.items(); track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  } @else {
+    <div class="empty-state">
+      <mat-icon>favorite_border</mat-icon>
+      <h2>No tienes favoritos aún</h2>
+      <p>Explora el catálogo y agrega productos a tus favoritos.</p>
+      <a mat-flat-button color="primary" routerLink="/products">Ver catálogo</a>
+    </div>
+  }
+</div>

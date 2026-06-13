@@ -1,0 +1,12 @@
+<div class="filter-bar">
+  <mat-chip-listbox>
+    @for (cat of categories; track cat.id) {
+      <mat-chip-option
+        [selected]="selected === cat.id"
+        (click)="select(cat.id)">
+        <mat-icon matChipAvatar>{{ cat.icon }}</mat-icon>
+        {{ cat.label }}
+      </mat-chip-option>
+    }
+  </mat-chip-listbox>
+</div>
