@@ -1,31 +1,174 @@
+// ============================================================
+// ESTILOS DE LA PÁGINA PRINCIPAL
+// ============================================================
+
+// ============================================================
+// SECCIÓN HERO - Fondo con gradiente y texto centrado
+// ============================================================
 .hero {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: white;
   padding: 80px 24px;
   text-align: center;
-  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; }
-  .accent { color: #00d4ff; }
-  p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 32px; }
-  .cta-btn { padding: 12px 32px; font-size: 1rem; }
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Contenido del hero
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  // Título principal con dos líneas
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    // Cada línea ocupa su propio bloque
+    .line1, .line2 {
+      display: block;
+      width: 100%;
+    }
+
+    // Línea "para gamers" en color azul
+    .accent {
+      color: #00d4ff;
+      margin-top: 4px;
+    }
+  }
+
+  // Texto descriptivo
+  p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Botón de llamado a la acción
+  .cta-btn {
+    padding: 12px 32px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
-h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; }
+
+// ============================================================
+// CONTENEDOR GENERAL - Ancho máximo y centrado
+// ============================================================
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+// ============================================================
+// TÍTULOS DE SECCIÓN
+// ============================================================
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a1a2e;
+}
+
+// ============================================================
+// GRID DE CATEGORÍAS - Tarjetas con íconos
+// ============================================================
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 16px;
+
+  // Cada categoría es un enlace con apariencia de chip
   .category-chip {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    padding: 20px; border-radius: 12px; background: #f5f5f5;
-    text-decoration: none; color: inherit; font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f5f5f5;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
     transition: all 0.2s;
-    &:hover { background: #e3f2fd; transform: translateY(-2px); }
-    mat-icon { font-size: 2rem; width: 2rem; height: 2rem; color: #1976d2; }
+
+    // Efecto hover: fondo azul claro y ligera elevación
+    &:hover {
+      background: #e3f2fd;
+      transform: translateY(-2px);
+    }
+
+    // Icono de la categoría
+    mat-icon {
+      font-size: 2rem;
+      width: 2rem;
+      height: 2rem;
+      color: #1976d2;
+    }
   }
 }
+
+// ============================================================
+// GRID DE PRODUCTOS DESTACADOS
+// ============================================================
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
 }
-.view-all { text-align: center; margin-top: 32px; }
+
+// ============================================================
+// BOTÓN "VER TODOS"
+// ============================================================
+.view-all {
+  text-align: center;
+  margin-top: 32px;
+}
+
+// ============================================================
+// RESPONSIVE - AJUSTES PARA PANTALLAS PEQUEÑAS
+// ============================================================
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 16px;
+    min-height: 50vh;
+  }
+
+  .container {
+    padding: 32px 16px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}

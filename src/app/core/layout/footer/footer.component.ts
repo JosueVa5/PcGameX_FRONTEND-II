@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <footer class="footer">
-      <p>© 2025 PCgameX — Tu tienda de hardware gamer</p>
+      <p>© 2026 PCgameX — Tu tienda de hardware gamer</p>
     </footer>
   `,
   styles: [`
