@@ -101,7 +101,7 @@
 
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Especificaciones (separadas por coma)</mat-label>
-            <input matInput formControlName="specs" placeholder="16GB GDDR6X, DLSS 3.5, Ray Tracing" />
+            <input matInput formControlName="specs" placeholder="Samsung, smartphones" />
           </mat-form-field>
 
           <mat-slide-toggle formControlName="available" color="primary">
@@ -119,7 +119,7 @@
     }
 
     <!-- TABLA DE PRODUCTOS -->
-    <table mat-table [dataSource]="productService.getAll()" class="products-table">
+    <table mat-table [dataSource]="products" class="products-table">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
         <td mat-cell *matCellDef="let p">{{ p.name }}</td>

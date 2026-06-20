@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { FilterBarComponent } from '../../components/filter-bar/filter-bar.component';
@@ -13,7 +14,7 @@ import { ICategory } from '../../interfaces/category.interface';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatIconModule, FormsModule, ProductCardComponent, FilterBarComponent],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatProgressSpinnerModule, FormsModule, ProductCardComponent, FilterBarComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -23,36 +24,49 @@ export class ProductsComponent implements OnInit {
 
   searchQuery = '';
   selectedCategory = 'all';
+  allProducts: IProduct[] = [];
   filtered: IProduct[] = [];
+  isLoading = false;
 
   categories: ICategory[] = [
     { id: 'all', label: 'Todos', icon: 'apps' },
-    { id: 'gpu', label: 'GPU', icon: 'videogame_asset' },
-    { id: 'cpu', label: 'CPU', icon: 'memory' },
-    { id: 'ram', label: 'RAM', icon: 'storage' },
-    { id: 'storage', label: 'Almacenamiento', icon: 'save' },
-    { id: 'motherboard', label: 'Placa Madre', icon: 'developer_board' },
-    { id: 'psu', label: 'Fuente', icon: 'power' },
+    { id: 'smartphones', label: 'Smartphones', icon: 'smartphone' },
+    { id: 'laptops', label: 'Laptops', icon: 'laptop' },
+    { id: 'tablets', label: 'Tablets', icon: 'tablet' },
+    { id: 'mobile-accessories', label: 'Accesorios', icon: 'headphones' },
   ];
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if (params['category']) this.selectedCategory = params['category'];
-      this.applyFilters();
+      this.selectedCategory = params['category'] || 'all';
+      this.loadProducts();
     });
   }
 
-  applyFilters() {
-    let list = this.productService.getByCategory(this.selectedCategory);
+  loadProducts() {
+    this.isLoading = true;
+    this.productService.getByCategory(this.selectedCategory).subscribe({
+      next: (products) => {
+        this.allProducts = products;
+        this.applySearch();
+        this.isLoading = false;
+      },
+      error: () => { this.isLoading = false; }
+    });
+  }
+
+  applySearch() {
     if (this.searchQuery.trim()) {
       const q = this.searchQuery.toLowerCase();
-      list = list.filter(p => p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+      this.filtered = this.allProducts.filter(p =>
+        p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+    } else {
+      this.filtered = this.allProducts;
     }
-    this.filtered = list;
   }
 
   onCategoryChange(category: string) {
     this.selectedCategory = category;
-    this.applyFilters();
+    this.loadProducts();
   }
 }

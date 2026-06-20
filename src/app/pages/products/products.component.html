@@ -3,7 +3,7 @@
 
   <mat-form-field appearance="outline" class="search-field">
     <mat-label>Buscar producto</mat-label>
-    <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilters()" placeholder="Ej: RTX 4070, AMD..."/>
+    <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applySearch()" placeholder="Ej: RTX 4070, AMD..."/>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 
